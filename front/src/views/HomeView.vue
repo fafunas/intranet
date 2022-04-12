@@ -1,15 +1,20 @@
 <template>
-  <hello-world />
+ <v-main>
+    <Carrousel />
+  <hr>
+ </v-main>
+ 
+
 </template>
 
 <script>
-  import HelloWorld from '../components/HelloWorld'
+  import Carrousel from '../components/Carrousel.vue'
 
   export default {
-    name: 'Home',
+    name: 'Carrousel',
 
     components: {
-      HelloWorld,
+      Carrousel
     },
   }
 </script>
