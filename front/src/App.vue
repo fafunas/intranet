@@ -3,6 +3,7 @@
     <Navbar/>
 
     <v-main>
+      <Login/>
       <router-view/>
     </v-main>
     <Footer/>
@@ -13,10 +14,11 @@
 
 import Navbar from "./components/Navbar.vue"
 import Footer from "./components/Footer.vue"
+import Login from "./components/Login.vue"
 
 export default {
   name: 'App',
-  components: {Navbar,Footer}
+  components: {Navbar,Footer,Login}
   
 
  

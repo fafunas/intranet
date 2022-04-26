@@ -1,6 +1,6 @@
 from rest_framework import routers,serializers,viewsets
 
-from .models import noticia, documento, rol 
+from .models import noticia, documento, rol, training
 
 class NotiSerializer(serializers.ModelSerializer):
     class Meta:
@@ -17,3 +17,7 @@ class RolSerializer( serializers.ModelSerializer):
         model = rol
         fields = '__all__'
 
+class TrainingSerializer ( serializers.ModelSerializer):
+    class Meta:
+        model = training
+        fields = '__all__'
