@@ -24,15 +24,4 @@ export default{
         
     },
 
-
-    getters:{
-        drawer: state => state.drawer
-    }
-
-
-
-
-
-
-
 }
