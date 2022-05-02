@@ -16,7 +16,7 @@
     </v-card-subtitle>
 
     <v-card-text class="text--primary">
-      <div>{{news.description}}</div>
+      <div>{{news.shortDescription}}</div>
 
       
     </v-card-text>
@@ -26,17 +26,18 @@
         color="orange"
         text
       >
-        Modificar
+        <v-icon>mdi-note-edit
+    </v-icon>
       </v-btn>
 
       <v-btn
-        color="orange"
+        color="red"
         text
       >
-        Eliminar
+        <v-icon>mdi-delete</v-icon>
       </v-btn>
       <v-spacer></v-spacer>
-      {{news.created}}
+      {{news.update}}
     </v-card-actions>
   </v-card>
 </template>

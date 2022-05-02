@@ -1,5 +1,4 @@
 from tabnanny import verbose
-from tkinter.messagebox import QUESTION
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -11,12 +10,19 @@ from django.contrib.auth.models import User
 class noticia(models.Model):
     name = models.CharField(max_length=30)
     description = models.TextField(blank=True, null= True)
+    shortDescription = models.CharField(max_length=30, blank=True, null=True)
     image = models.ImageField(upload_to='img/') 
     created = models.DateTimeField(auto_now=True)
     update = models.DateField(auto_now_add=True)
 
     def __str__(self):
         return self.description
+
+    def save(self, *args, **kwargs):
+        self.shortDescription = self.description[0:29]
+
+        super(noticia,self).save(*args, **kwargs)
+
 
     class Meta:
         verbose_name = 'Noticia'
@@ -45,6 +51,7 @@ class rol(models.Model):
 class documento(models.Model):
     name= models.CharField(max_length=50)
     description = models.TextField(blank=True, null=True)
+    shortDescription = models.CharField(max_length=30)
     file = models.FileField(max_length=100,upload_to='doc/')
     rolId = models.ForeignKey(rol , on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now=True)
@@ -52,6 +59,11 @@ class documento(models.Model):
 
     def __str__(self):
         return self.description
+
+    def save(self, *args, **kwargs):
+        self.shortDescription = self.description[0:29]
+
+        super(documento,self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = 'Documento'
