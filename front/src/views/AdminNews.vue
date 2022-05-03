@@ -1,15 +1,18 @@
 <template>
-<v-container>
-  <div>
+  <v-main class="pa-4">
+    <div class="pa-2 btn"> <v-btn color="primary"
+              dark
+              class="mb-2"
+              v-bind="attrs"
+              v-on="on">Agregar Noticia</v-btn></div>
+    <div>
       <v-row>
-          <v-col v-for="noti in news" :key="noti.id">
-        <NewsList 
-        :news="noti"/>
-          </v-col>
+        <v-col v-for="noti in news" :key="noti.id">
+          <NewsList :news="noti" />
+        </v-col>
       </v-row>
-    
-  </div>
-  </v-container>
+    </div>
+  </v-main>
 </template>
 
 <script>
@@ -30,4 +33,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.btn{
+  text-align: right;
+}
 </style>
