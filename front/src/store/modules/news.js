@@ -26,7 +26,7 @@ export default {
             axios.get(NewsEndpoint)
             .then((data)=>{
                 context.commit("NEWS",data.data)
-                console.log(data.data)
+                //console.log(data.data)
             })
           },
 
@@ -43,6 +43,15 @@ export default {
 
 
     getters:{
-        news: state => state.news
+        news: state => state.news,
+
+        totalNews(state){
+            let total = state.news.leght 
+            let slice = total - 4
+
+            return state.news.slice(slice,total)
+
+
+        }
     }
 }
