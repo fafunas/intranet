@@ -6,7 +6,12 @@
       right
       color="grey lighten-5"
     >
-      <Login/>
+      <div v-if="login">
+          <UserPanel/>
+          </div>  
+      <div v-else>
+          <Login/>
+      </div>
     </v-navigation-drawer>
 </template>
 
@@ -14,9 +19,15 @@
 
 import {mapState} from 'vuex'
 import Login from './user/Login.vue'
+import UserPanel from './user/UserPanel.vue'
 
     export default {
-        components:{Login},
+        data() {
+            return {
+                login: localStorage.getItem("token")
+            }
+        },
+        components:{Login,UserPanel},
 
     computed:{
         ...mapState('notifications',['drawer'])

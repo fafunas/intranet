@@ -7,6 +7,7 @@ from rest_framework.permissions import IsAuthenticated
 # Create your views here.
 
 class DocumentoViewSet(viewsets.ModelViewSet):
+    permission_classes = (IsAuthenticated,)
     queryset = documento.objects.all().order_by('id')
     serializer_class = DocumentSerializer
 
@@ -15,6 +16,5 @@ class RolViewSet(viewsets.ModelViewSet):
     serializer_class = RolSerializer
 
 class NoticiaViewSet(viewsets.ModelViewSet):
-    permission_classes = (IsAuthenticated,)
     queryset = noticia.objects.all().order_by('id')
     serializer_class = NotiSerializer

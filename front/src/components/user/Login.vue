@@ -45,7 +45,22 @@
 
     methods:{
       validate(){
-        this.$refs.form.validate()
+        if (this.$refs.form.validate()){
+          const payload = {
+              username: this.name,
+              password: this.password
+            }
+          this.$store.dispatch("user/userLogin",payload)
+          .then(()=>{
+            console.log(payload,"Bien logeado")
+            this.$router.go()
+          })
+          .catch(err=>{
+            console.log(err)
+          })
+     
+        }
+        console.log("Faltan Datos")
       }
     }
 
