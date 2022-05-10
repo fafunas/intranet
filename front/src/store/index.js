@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 
 import news from './modules/news'
 import notifications from './modules/notifications'
+import user from './modules/user'
 
 Vue.use(Vuex)
 
@@ -17,6 +18,7 @@ export default new Vuex.Store({
   },
   modules: {
     news,
-    notifications
+    notifications,
+    user
   }
 })
