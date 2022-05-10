@@ -1,12 +1,6 @@
 <template>
-     <v-navigation-drawer
-      v-model="drawer"
-      absolute
-      temporary
-      right
-      color="grey lighten-5"
-    >
-      <v-list-item>
+    <div>
+<v-list-item>
         <v-list-item-avatar>
           <v-img src="https://randomuser.me/api/portraits/men/78.jpg"></v-img>
         </v-list-item-avatar>
@@ -33,26 +27,21 @@
           </v-list-item-content>
         </v-list-item>
       </v-list>
-    </v-navigation-drawer>
+    </div>
 </template>
 
 <script>
-
-import {mapState} from 'vuex'
     export default {
         data () {
       return {
         
         items: [
-          { title: 'Home', icon: 'mdi-view-dashboard' },
-          { title: 'About', icon: 'mdi-forum' },
+          { title: 'Noticias', icon: 'mdi-view-dashboard' },
+          { title: 'Capacitaciones', icon: 'mdi-forum' },
         ],
       }
     },
-
-    computed:{
-        ...mapState('notifications',['drawer'])
-    }
+        
     }
 </script>
 
