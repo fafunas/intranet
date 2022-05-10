@@ -36,10 +36,11 @@ export default{
                 axios.post('http://127.0.0.1:8000/api/token/',{
                     username: credentials.username,
                     password: credentials.password
+                    //Me conecto al endpoint con los usuarios que traigo del login para obtener el Token
                 })
                 .then(response=>{
                     context.commit("setToken",{access: response.data.access, refresh: response.data.refresh})
-                    console.log(response)
+                  //Si es correcto ejecuto la mutacion donde guardo los 2 token el el LS
                     resolve()
                 })
                 .catch(err=>{
