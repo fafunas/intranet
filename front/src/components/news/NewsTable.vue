@@ -36,12 +36,15 @@
                   ></v-textarea>
                 </v-col>
                 <v-col cols="12" sm="6">
-                  <v-text-field
-                    v-model="editNews.image"
+                  <v-file-input
+                    :src="editNews.image"
                     label="File input"
-                    filled
+                    accept="image/*"
                     prepend-icon="mdi-camera"
-                  ></v-text-field>
+                    @change="upload"
+                    required
+                  ></v-file-input>
+                  <input type="file" @change="upload">
                 </v-col>
               </v-row>
             </v-container>
@@ -52,7 +55,7 @@
             <v-btn color="blue darken-1" text @click="dialog = false">
               Cerrar
             </v-btn>
-            <v-btn color="blue darken-1" text @click="dialog = false">
+            <v-btn color="blue darken-1" text @click="saveItem()">
               Guardar
             </v-btn>
           </v-card-actions>
@@ -87,6 +90,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import { mapGetters } from "vuex";
 export default {
   data: () => ({
@@ -116,13 +120,40 @@ export default {
           this.editNews.image = id.image.toString()
           this.dialog = true
           console.log(id.id)
+      },
+
+      saveItem(){
+        
+      
+    
+      },
+
+      upload(event){
+        const formData = new FormData();
+        let image = event.target.files[0]
+        formData.append('name', this.editNews.name)
+        formData.append('description', this.editNews.description)
+       formData.append('image', image)
+        let config = {
+      header : {
+       'Content-Type' : 'multipart/form-data'
+     }
+    }
+      axios.post("http://127.0.0.1:8000/rest/v1/news/", formData, config)
+    
+    
+    
+    // for (var pair of formData.entries()) {
+    //     console.log(pair[0] + ", " + pair[1]);
+    //   }
+      console.log(event)
       }
   },
 
   mounted() {
     this.$store.dispatch("news/getNews");
 
-    console.log("news");
+  //  console.log("news");
   },
 };
 </script>
